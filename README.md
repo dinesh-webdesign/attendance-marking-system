@@ -58,7 +58,7 @@ https://medium.com/@ageitgey/machine-learning-is-fun-part-4-modern-face-recognit
 Clone the project
 
 ```bash
-  git clone 
+  git clone https://github.com/dinesh-webdesign/attendance-marking-system
 ```
 
 Go to the project directory
