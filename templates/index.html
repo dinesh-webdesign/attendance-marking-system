@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <title>Title</title>
+    <style>
+        body{
+
+        background-image : url('/wallpapers/wallpaper_1.jpg');
+        background-image : radial-gradient(circle , LemonChiffon , white , #8080ff) ;
+        text-align : center;
+        }
+        header{
+        background :  #248f8f;
+        height : 100px;
+        width : 100%;
+        padding : 20px;
+        }
+        h1{
+        text-align: center;
+        text-transform:uppercase;
+        color:#ffffff;
+        }
+        h3{
+        color : #008000;
+        }
+        #marking{
+        display:inline-block;
+        margin: 10px;
+        background-image: radial-gradient(circle, white, Aquamarine);
+        height: 100px;
+        width: 400px;
+        padding: 60px;
+        border: 2px solid black;
+        -webkit-border-radius: 15px ;
+        transition-property : height,width,background-image;
+        transition-duration: .25s;
+        transition-timing-function:ease;
+        transition-delay: .2s;
+
+        }
+        #marking:hover {
+        height: 110px;
+        width: 405px;
+        background-image : radial-gradient(circle , white , #ffff66 );
+        }
+        .upload{
+        display:inline-block;
+        margin: 10px;
+        background-image: radial-gradient(circle, white, Plum);
+        height: 100px;
+        width: 400px;
+        padding: 60px;
+        border: 2px solid black;
+        -webkit-border-radius: 15px ;
+        transition-property : height,width,background-image;
+        transition-duration: .25s;
+        transition-timing-function:ease;
+        transition-delay: .2s;
+        }
+        .upload:hover{
+        height: 110px;
+        width: 405px;
+        background-image : radial-gradient(circle , white , #66ff66 );
+        }
+        #showdata{
+        display:inline-block;
+        margin: 10px;
+        background-image: radial-gradient(circle, white, Plum);
+        height: 100px;
+        width: 400px;
+        padding: 60px;
+        border: 2px solid black;
+        -webkit-border-radius: 15px ;
+        transition-property : height,width,background-image;
+        transition-duration: .25s;
+        transition-timing-function:ease;
+        transition-delay: .2s;
+        }
+        #showdata:hover{
+        height: 110px;
+        width: 405px;
+        background-image : radial-gradient(circle , white , #66ff66 );
+        }
+
+        #data{
+        align:center;
+        }
+        #data table{
+        font-family:'Times New Roman', Times, serif;
+        font-size: large;
+        width:70%;
+        line-height: 35px;
+
+         margin:0 auto;
+        }
+        #data th{
+        background-image: linear-gradient(#028539 10%,#b8f1a9 100%);
+        border-bottom: 3px solid #0c743a;
+        border-radius: 3px 3px 0 0;
+        color:#ffffff;
+        }
+        #data td{
+        padding: 2px;
+        border-radius:2px;
+        text-transform: capitalize;
+        text-shadow: 1px 0.5px  #b3b3b3;
+        }
+        #data tr{
+        background-color: rgb(230, 245, 173);
+        }
+        td:first-child{
+        text-align: center;
+        }
+        td:nth-child(2){
+       text-align:center;
+        }
+        td:nth-child(3){
+        text-align:center;
+        }
+        th:first-child{
+        text-align: center;
+        }
+        th:nth-child(2){
+        text-align:center;
+        }
+        th:nth-child(3){
+        text-align:center;
+        }
+        th:nth-child(4){
+        text-align:center;
+        }
+        tr{
+        color: rgba(0,0,0,0.6);
+        }
+        tr:hover{
+        color: rgba(0,0,0,1);
+        }
+
+        h2{
+        color: #B30000;
+        }
+
+
+    </style>
+
+</head>
+<body >
+    <header>
+        <h1 >Attendance Project</h1>
+    </header>
+
+    <div class="upload">
+        <h2>
+            ADD NEW STUDENT
+        </h2>
+        <h3>
+            {{msg}}
+        </h3>
+        <br>
+       <form action="/Upload" method="post" enctype="multipart/form-data" >
+         <input class="form-control" type="file" name="file-name" multiple>
+        <input class="btn btn-primary mt-3"type="submit" value="upload image">
+    </form>
+    </div>
+
+    <div id="marking">
+        <h2>MARK ATTENDANCE</h2>
+        {% if check %}
+        <h3> The Attendance of {{check}} is recorded</h3>
+        {% endif %}
+        <div class="container">
+        <form class="p-3 text-center" action="/detection" ,method="post" enctype="multipart/form-data">
+        <input class="btn btn-primary mt-3"type="submit" value="mark attendance">
+    </form>
+
+    </div>
+    </div>
+    <div id="showdata">
+        <h2> ATTENDANCE RECORD</h2>
+         <form action="/show_data" >
+        <input type="submit" value="attendance data" />
+    </form>
+
+    </div>
+     <div id="data">
+          {{ data|safe }}
+        </div>
+
+
+
+</body>
+</html>
